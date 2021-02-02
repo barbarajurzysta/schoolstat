@@ -2,6 +2,13 @@
 
 ## General info
 Package for analysis of Polish schools and population
+	
+## Requirements
+* Python: >= 3.6
+* Libraries: pandas, openpyxl, xlrd
+
+## Setup
+Clone this repository and run `pip install ./path/to_package`
 
 ## Data
 The package works with three datasets: 
