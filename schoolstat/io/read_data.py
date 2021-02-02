@@ -2,8 +2,8 @@ import pandas as pd
 
 
 def schools(file_name):
-    cols = ['Województwo', 'Gmina', 'Typ gminy', 'Miejscowość', 'Nazwa typu',
-            'Regon', 'Uczniowie, wychow., słuchacze',
+    cols = ['Lp.', 'Województwo', 'Gmina', 'Typ gminy', 'Miejscowość',
+            'Nazwa typu', 'Regon', 'Uczniowie, wychow., słuchacze',
             'Nauczyciele pełnozatrudnieni',
             'Nauczyciele niepełnozatrudnieni (w etatach)',
             'Regon jednostki sprawozdawczej']
@@ -11,7 +11,7 @@ def schools(file_name):
                        usecols=cols, skiprows=[1], header=0,
                        dtype={'Regon': str,
                               'Regon jednostki sprawozdawczej': str})
-    if set(df.columns) != set(cols):
+    if set(df.columns) != set(set(cols).difference({'Lp.'})):
         raise ValueError(f'Incomplete data in file {file_name}')
     return df
 
@@ -24,6 +24,7 @@ def district_population(file_name):
         if len(df[sheet].columns) != 2:
             raise ValueError(f'Incomplete data in sheet {sheet}, '
                              f'file {file_name}')
+    return df
 
 
 def population(file_name):
@@ -31,6 +32,7 @@ def population(file_name):
                        nrows=102, names=['Wiek', 'Razem', 'Miasta', 'Wieś'])
     if len(df.columns) != 4:
         raise ValueError(f'Incomplete data in file {file_name}')
+    return df
 
 
 def differences(file_name):
