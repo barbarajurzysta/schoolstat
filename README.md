@@ -17,9 +17,18 @@ The package works with three datasets:
 3. Total population
 
 You can download the data from: 
-[schools](https://dane.gov.pl/pl/dataset/839,wykaz-szko-i-placowek-oswiatowych/resource/16251,wykaz-szkol-i-placowek-wg-stanu-na-30ix-2018-r/table) and
-[population](https://stat.gov.pl/obszary-tematyczne/ludnosc/ludnosc/ludnosc-stan-i-struktura-ludnosci-oraz-ruch-naturalny-w-przekroju-terytorialnym-stan-w-dniu-30-06-2020,6,28.html)
+[Schools](https://dane.gov.pl/pl/dataset/839,wykaz-szko-i-placowek-oswiatowych/resource/16251,wykaz-szkol-i-placowek-wg-stanu-na-30ix-2018-r/table) and
+[Population](https://stat.gov.pl/obszary-tematyczne/ludnosc/ludnosc/ludnosc-stan-i-struktura-ludnosci-oraz-ruch-naturalny-w-przekroju-terytorialnym-stan-w-dniu-30-06-2020,6,28.html)
    (district population is in tabela12.xls, total population is in tabela01.xls)
+
+You also need to provide the information about year of creating each dataset (in this example the Schools dataset is from 2018 and both of the Population datasets are from 2020).  
+If you know about any inconsistencies between the datasets, you can also specify the differences_file, it should look like:
+```
+Gmina,Miejscowość,Nowa Gmina
+Ostrowice,Ostrowice,Drawsko Pomorskie
+Ostrowice,Nowe Worowo,Złocieniec
+```
+where 'Gmina' is the name of a district in Schools dataset, 'Miejscowość' is the name of the town and 'Nowa Gmina' is the name of the district in Population dataset.
 
 ## Code Example
 ```
